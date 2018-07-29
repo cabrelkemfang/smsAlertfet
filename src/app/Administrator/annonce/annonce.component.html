@@ -1,0 +1,59 @@
+<div [class.loader-hidden]="!show">
+  <div class="loader-overlay">
+    <div>
+      <mat-progress-bar mode="indeterminate" *ngIf="show"></mat-progress-bar>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>
+<mat-card class="example-card">
+  <p class="mat-elevation-z10">Annoncement</p>
+  <br>
+  <mat-card-content>
+    <form class="example-form" #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Send As" name="sendAs" ngModel>
+                <mat-option value="email" (click)="email()">Email</mat-option>
+                <mat-option value="sms" (click)="sms()">SMS</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Select A Level" name="level" ngModel>
+                <mat-option value="{{lst}}" *ngFor="let lst of level">{{lst}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+
+        </tr>
+      </table>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Subject" name="subject"  ngModel>
+        <mat-error>
+          Please the Subject required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Content" name="content"  ngModel rows="4" cols="50"></textarea>
+        <mat-error>
+          Please the Content is required
+        </mat-error>
+      </mat-form-field>
+
+      <div [hidden]="mail" class="example-full-width">
+        <input id="input-file-id" multiple type="file" (change)="selectFile($event)" enctype="multipart/form-data" name="file" ngModel
+          [disabled]="mail" />
+      </div>
+
+      <button mat-raised-button type="submit" [disabled]="!form.form.valid" class="example-full-width color1">Send Annonce</button>
+    </form>
+
+  </mat-card-content>
+</mat-card>

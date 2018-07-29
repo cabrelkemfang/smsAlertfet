@@ -1,0 +1,43 @@
+<div>
+  <mat-card class="example-card">
+    <p class="mat-elevation-z10">Change Phone Number </p>
+    <br>
+    <mat-card-content>
+      <form class="example-form" #form1="ngForm" (ngSubmit)="change(form1.value)">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput type="number" placeholder="Old Phone Number" name="oldphoneNumber" required ngModel>
+                <mat-error>
+                  Please the Old Phone Number is required
+                </mat-error>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput type="number" placeholder=" New Phone Number" name="newphoneNumber" required ngModel>
+                <mat-error>
+                  Please the  New Phone Number is required
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <button mat-raised-button color="accent" type="submit" [disabled]="!form1.form.valid" class="example-full-widt">Send </button>
+      </form>
+      <div [hidden]="active">
+        <form class="example-form" #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Please enter the verification code we sent to your phone." name="code" required ngModel>
+            <mat-error>
+              Please the Confirmation code is required
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="accent" type="submit" [disabled]="!form.form.valid" class="example-full-widt">Send </button>
+        </form>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>

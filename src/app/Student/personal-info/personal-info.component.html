@@ -1,0 +1,44 @@
+
+      <mat-card class="example-card">
+        <mat-card-content>
+          <p  class="mat-elevation-z10">Update Profil</p>
+          <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" class="card">
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="First Name " name="firstName" required [(ngModel)]="student.firstName">
+              <mat-error>
+                Please the Full Name is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput type="text" placeholder="Last Name " name="lastName" required [(ngModel)]="student.lastName">
+                <mat-error>
+                  Please the Last Name is required
+                </mat-error>
+              </mat-form-field>
+          
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="Matricule Number" name="matricule" required [(ngModel)]="student.matricule">
+              <mat-error>
+                Please the Matricule Number is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput type="text" placeholder="Email " name="email" required [(ngModel)]="student.email">
+                <mat-error>
+                  Please the Email  is required
+                </mat-error>
+              </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput type="password" placeholder="Password" name="password" required [(ngModel)]="student.password">
+              <mat-error>
+                Please the Password required
+              </mat-error>
+            </mat-form-field>
+            <button mat-raised-button class="color1" type="submit" [disabled]="!form.form.valid">Update</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    

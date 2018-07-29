@@ -1,0 +1,67 @@
+<mat-toolbar class="tool">
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space">
+    <h1> Welcome to Sms Notification Platform </h1>
+  </span>
+
+</mat-toolbar>
+
+
+<mat-drawer-container class="example-container " autosize>
+
+  <div class="example-sidenav-content">
+    <div class="app">
+      <mat-card class="example-card">
+        <mat-card-content>
+          <div class="img">
+          
+            <img src="/assets/image/download.jpeg">
+          </div>
+          <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" class="card">
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Login As" name="login" ngModel required>
+                <mat-option value="student" (click)="student()">Student</mat-option>
+                <mat-option value="administrator" (click)="admin()">Administrator</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div [hidden]="stu">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Matricule Number" name="matriculeNumber" required ngModel [disabled]="stu">
+                  <mat-error>
+                    Please the Matricule Number is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+            <div [hidden]="adm">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="email" placeholder="Email" name="email" required ngModel [disabled]="adm">
+                  <mat-error>
+                    Please the Email is required
+                  </mat-error>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field class="example-full-width">
+              <input matInput type="password" placeholder="Password" name="password" required ngModel>
+              <mat-error>
+                Please the password is required
+              </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button class="color1" type="submit" [disabled]="!form.form.valid">Login</button>
+          </form>
+
+          <p>Don't yet have an account ??
+            <a (click)="sign_up()"> Sign-up Here</a>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+
+</mat-drawer-container>
+<mat-toolbar color="primary"></mat-toolbar>

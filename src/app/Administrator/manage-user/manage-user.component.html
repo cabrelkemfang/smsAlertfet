@@ -1,0 +1,59 @@
+<mat-card class="example-card">
+  <p class="mat-elevation-z10">Register Student</p>
+  <mat-card-content>
+    <table mat-table [dataSource]="ELEMENT_DATA" matSort class="mat-elevation-z8" class="table0">
+
+      <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> S/N </th>
+        <td mat-cell *matCellDef="let element ; let i = index" (click)="open(element)"> {{i+1}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="full_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
+        <td mat-cell *matCellDef="let element" (click)="open(element)"> {{element.firstName}} {{element.lastName}}  </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="matricule">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Matricule </th>
+        <td mat-cell *matCellDef="let element" (click)="open(element)"> {{element.matriculeNumber}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let element" (click)="open(element)"> {{element.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+        <td mat-cell *matCellDef="let element" (click)="open(element)"> {{element.phoneNumber}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="activated">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Activate </th>
+        <td mat-cell *matCellDef="let element" (click)="activate(element)">
+          <button mat-raised-button color="primary">Anable</button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="disable">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Disable </th>
+        <td mat-cell *matCellDef="let element" (click)="disable(element)">
+          <button mat-raised-button color="warn">Disable</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+  </mat-card-content>
+
+</mat-card>

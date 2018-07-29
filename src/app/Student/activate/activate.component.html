@@ -1,0 +1,21 @@
+<div>
+  <mat-card class="example-card">
+    <p class="mat-elevation-z10">Activate Sms </p>
+    <br>
+    <mat-card-content>
+      <button mat-raised-button class="example-full-width activate"  [disabled]="status" (click)="activate()">Activate</button>
+      <div [hidden]="active">
+        <form class="example-form" #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Please enter the verification code we sent to your phone." name="code" required ngModel>
+            <mat-error>
+              Please the Confirmation code is required
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="accent" type="submit" [disabled]="!form.form.valid" class="example-full-widt">Send </button>
+        </form>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>

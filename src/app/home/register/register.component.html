@@ -1,0 +1,70 @@
+<mat-toolbar class="tool">
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space">
+    <h1> Welcome to Sms Notification Platform </h1>
+  </span>
+
+</mat-toolbar>
+
+
+<mat-drawer-container class="example-container " autosize>
+
+  <div class="example-sidenav-content">
+    <div class="app">
+      <mat-card class="example-card">
+        <mat-card-content>
+          <p  class="mat-elevation-z10">Sign Up</p>
+          <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" class="card">
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="First Name " name="firstName" required ngModel>
+              <mat-error>
+                Please the First Name is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="Last Name " name="lastName" required ngModel>
+              <mat-error>
+                Please the Last Name is required
+              </mat-error>
+            </mat-form-field>
+          
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="Matricule Number" name="matricule" required ngModel>
+              <mat-error>
+                Please the Matricule Number is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="Email" name="email" required ngModel>
+              <mat-error>
+                Please the Email  is required
+              </mat-error>
+            </mat-form-field>
+          
+            <mat-form-field class="example-full-width">
+              <input matInput type="number" placeholder="Phone Number" name="phoneNumber" required ngModel>
+              <mat-error>
+                Please the Phone Number is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput type="password" placeholder="Password" name="password" required ngModel>
+              <mat-error>
+                Please the password is required
+              </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button class="color1" type="submit" [disabled]="!form.form.valid">Sign-up</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+
+</mat-drawer-container>
+<mat-toolbar color="primary"></mat-toolbar>

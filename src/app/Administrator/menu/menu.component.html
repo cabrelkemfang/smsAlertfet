@@ -1,0 +1,78 @@
+<mat-toolbar class="tool">
+  <span>
+    <button mat-icon-button (click)="drawer.toggle()">
+      <i class="material-icons" matSuffix>subject</i>
+    </button>
+  </span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space">
+    <h2> Welcome to Sms Notification Platform </h2>
+  </span>
+  <p>
+      <mat-icon class="example-icon">account_circle</mat-icon> {{fullName}}
+      <br/>
+      <mat-icon class="example-icon">email</mat-icon> {{email}}
+    </p>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container " autosize>
+  <mat-drawer #drawer class="example-sidenav mat-elevation-z20" mode="side" opened>
+  
+    <mat-list class="list">
+      <div [hidden]="user">
+        <div class="admin">
+          <mat-list-item routerLink="Information" routerLinkActive="active-link">
+
+            Update Profil
+
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item routerLink="annonce" routerLinkActive="active-link">
+
+            Make an annoncement
+
+          </mat-list-item>
+          <mat-divider></mat-divider>
+
+          <mat-list-item routerLink="view_student" routerLinkActive="active-link">
+
+            View Resgister student
+
+          </mat-list-item>
+          <mat-divider></mat-divider>
+
+          <mat-divider></mat-divider>
+          <mat-list-item routerLink="view_result" routerLinkActive="active-link">
+
+            View Result
+
+          </mat-list-item>
+          <mat-divider></mat-divider>
+
+          <mat-divider></mat-divider>
+
+          <mat-list-item routerLink="create_user" routerLinkActive="active-link">
+            Create a user
+
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        
+          <mat-divider></mat-divider>
+        </div>
+      </div>
+      <mat-list-item>
+        <button mat-raised-button color="accent" class="example-full-width" (click)="logout()">Logout</button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+
+
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <div class="app">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>

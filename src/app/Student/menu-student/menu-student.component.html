@@ -1,0 +1,67 @@
+<mat-toolbar class="tool">
+  <span>
+    <button mat-icon-button (click)="drawer.toggle()">
+      <i class="material-icons" matSuffix>subject</i>
+    </button>
+  </span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space">
+    <h2> Welcome to Sms Notification Platform </h2>
+  </span>
+
+  <p>
+    <mat-icon class="example-icon">account_circle</mat-icon> {{fullName}}
+    <br/>
+    <mat-icon class="example-icon">email</mat-icon> {{email}}
+  </p>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container " autosize>
+  <mat-drawer #drawer class="example-sidenav mat-elevation-z20" mode="side" opened>
+
+    <h3 class="sms">
+      <u>Sms Alert </u>
+    </h3>
+    <div [style.background-color]="style" class="val">{{ value }}</div>
+
+    <mat-list class="list">
+
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="activate" routerLinkActive="active-link">
+
+        Activate Sms notification
+
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="change" routerLinkActive="active-link">
+
+        Change Number
+
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="personal" routerLinkActive="active-link">
+        Update Profil
+
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <button mat-raised-button color="accent" class="example-full-width" (click)="logout()">Logout</button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <div class="app">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>
