@@ -20,8 +20,8 @@ export class ServiceService {
     //headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
 
-    return this._http.post('http://localhost:8087/student', JSON.stringify(student), options)
-      .pipe(map(res => res.json()) // or any other operator
+    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/student', JSON.stringify(student), options)
+      .pipe(map(res => res.status) // or any other operator
       );
   }
 //save user
@@ -32,7 +32,20 @@ export class ServiceService {
     //headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
 
-    return this._http.post('http://localhost:8087/user', JSON.stringify(user), options)
+    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/user', JSON.stringify(user), options)
+      .pipe(map(res => res.json()) // or any other operator
+      );
+  }
+
+  //save user
+  UpdateUser(user) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    //headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+
+    return this._http.put('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/user', JSON.stringify(user), options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
@@ -44,8 +57,8 @@ export class ServiceService {
     //headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
 
-    return this._http.get('http://localhost:8087/secure/user/'+email, options)
-      .pipe(map(res => res.json()) // or any other operator
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/user/'+email, options)
+      .pipe(map(res => res) // or any other operator
       );
   }
 
@@ -57,7 +70,7 @@ export class ServiceService {
     //headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
 
-    return this._http.put('http://localhost:8087/secure/student', JSON.stringify(student), options)
+    return this._http.put('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/student', JSON.stringify(student), options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
@@ -69,7 +82,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://localhost:8087/secure/login/' + matricule + '/' + password, options)
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/login/' + matricule + '/' + password, options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
@@ -81,7 +94,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     //  headers.append('Authorization', 'Basic ' + token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://localhost:8087/secure/login/user/' + email + '/' + password, options)
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/login/user/' + email + '/' + password, options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
@@ -92,7 +105,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://localhost:8087/secure/result', options)
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/result', options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
@@ -103,7 +116,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.put('http://localhost:8087/result', options)
+    return this._http.put('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/result', options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
@@ -114,8 +127,8 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.put('http://localhost:8087/secure/student/' + phone + '/' + matricule, options)
-      .pipe(map(res => res.json()) // or any other operator
+    return this._http.put('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/student/' + phone + '/' + matricule, options)
+      .pipe(map(res => res.text()) // or any other operator
       );
   }
 
@@ -125,7 +138,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://localhost:8087/secure/activated/student', options)
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/activated/student', options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
@@ -136,8 +149,8 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.post('http://localhost:8087/secure/send/result', JSON.stringify(result), options)
-      .pipe(map(res => res.json())
+    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/send/result', JSON.stringify(result), options)
+      .pipe(map(res => res.status)
       );
   }
 
@@ -151,7 +164,19 @@ export class ServiceService {
     const formData = new FormData();
     formData.append('file', file, file.name);
 
-    return this._http.post('http://localhost:8087/send/email/'+subject+'/'+content+'/'+level, formData, options)
+    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/send/email/'+subject+'/'+content+'/'+level, formData, options)
+      .pipe(map(res => res.status)
+      );
+  }
+
+  sendSimpleEmail(subject,content,level) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+    
+    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/send/simple/email/'+subject+'/'+content+'/'+level, options)
       .pipe(map(res => res.status)
       );
   }
@@ -162,7 +187,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.post('http://localhost:8087/secure/send/annoncement/' + message + '/' + title + '/' + level, options)
+    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/send/annoncement/' + message + '/' + title + '/' + level, options)
       .pipe(map(res => res.status)
       );
   }
@@ -173,8 +198,8 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://localhost:8087/secure/desactivate/' + matricule, options)
-      .pipe(map(res => res.json())
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/desactivate/' + matricule, options)
+      .pipe(map(res => res.status)
       );
   }
 
@@ -184,7 +209,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://localhost:8087/student/' + matricule, options)
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/student/' + matricule, options)
       .pipe(map(res => res.json())
       );
   }
@@ -195,7 +220,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://localhost:8087/secure/user/' + matricule, options)
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/user/' + matricule, options)
       .pipe(map(res => res.json())
       );
   }
@@ -206,7 +231,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://localhost:8087/secure/verification/' + matricule, options)
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/verification/' + matricule, options)
       .pipe(map(res => res.text())
       );
   }
@@ -217,8 +242,8 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://localhost:8087/secure/verification/update/' + phone, options)
-      .pipe(map(res => res.json())
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/verification/update/' + phone, options)
+      .pipe(map(res => res.text())
       );
   }
 
@@ -228,7 +253,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://localhost:8087/secure/activate/' + matricule, options)
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/activate/' + matricule, options)
       .pipe(map(res => res.text())
       );
   }
@@ -240,7 +265,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('http://localhost:8087/secure/status/' + matricule, options)
+    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/status/' + matricule, options)
       .pipe(map(res => res.json())
       );
   }

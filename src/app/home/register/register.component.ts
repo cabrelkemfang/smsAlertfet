@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  show:Boolean;
 
   constructor(private _router: Router, private _service: ServiceService,public snackBar: MatSnackBar) { }
 
@@ -20,10 +21,12 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(value) {
-    console.log(value);
+    //console.log(value);
+    this.show=true;
     this._service.signup(value).subscribe((data) => {
-      console.log(data);
+     // console.log(data);
       this.openSnackBar("You account have been created successfully");
+      this.show=false;
       this._router.navigate(['home']);
     },
       (error) => {

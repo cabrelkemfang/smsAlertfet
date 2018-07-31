@@ -10,24 +10,28 @@ import { MatSnackBar } from '@angular/material';
 })
 export class ViewstudentComponent implements OnInit {
   ELEMENT_DATA;
+  show: Boolean;
   constructor(private _router: Router, private _service: ServiceService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.show=true;
     this._service.registerStudent().subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.ELEMENT_DATA = data;
+      this.show=false;
     },
       (error) => {
         this.openSnackBar(error._body);
-        console.log(error)
+       // console.log(error)
       })
   }
 
   disable(element){
+    
     this._service.desactive(element.matriculeNumber).subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this._service.registerStudent().subscribe((data) => {
-        console.log(data);
+      // console.log(data);
         this.ELEMENT_DATA = data;
       },
         (error) => {

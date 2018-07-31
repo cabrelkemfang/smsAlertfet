@@ -22,8 +22,8 @@ export class ChangenumberComponent implements OnInit {
     this.active = true;
     this._service.student(this.matricule).subscribe((data) => {
       this.phone = data.phoneNumber;
-      console.log(data);
-      console.log(this.phone);
+      //console.log(data);
+      //console.log(this.phone);
     },
       (error) => {
         console.log(error)
@@ -31,14 +31,14 @@ export class ChangenumberComponent implements OnInit {
   }
 
   change(value) {
-    console.log(value)
+    //console.log(value)
     if (value.oldphoneNumber == this.phone) {
       this.newPhone=value.newphoneNumber;
-      console.log(this.newPhone);
+    //  console.log(this.newPhone);
       this.active = false;
       this._service.code1(this.newPhone).subscribe((data) => {
         this.code = data;
-        console.log(this.code );
+     //  console.log(this.code );
       },
         (error) => {
           console.log(error)
@@ -48,13 +48,13 @@ export class ChangenumberComponent implements OnInit {
     }
   }
   onSubmit(value){
-    console.log(value);
-    console.log(this.newPhone);
+   // console.log(value);
+    //console.log(this.newPhone);
     if (value.code == this.code) {
     this._service.updatePhone(this.newPhone,this.matricule).subscribe((data) => {
       this.openSnackBar("You Phone Number have been updated");
       this.code = data;
-      console.log(this.code );
+     // console.log(this.code );
      
     },
       (error) => {

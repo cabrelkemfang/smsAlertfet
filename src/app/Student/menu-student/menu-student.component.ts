@@ -24,7 +24,7 @@ export class MenuStudentComponent implements OnInit {
     this._service.student(this.matricule).subscribe((data) => {
       this.fullName=data.firstName+" "+data.lastName;
       this.email=data.email;
-      console.log(this.fullName);
+      //console.log(this.fullName);
     },
       (error) => {
         console.log(error)
@@ -32,8 +32,8 @@ export class MenuStudentComponent implements OnInit {
   
 
     this._service.status(this.matricule).subscribe((data) => {
-      console.log(data);
-      console.log(typeof(data))
+     // console.log(data);
+     // console.log(typeof(data))
       if (data) {
         this.value = "Activated";
         this.style = 'green'

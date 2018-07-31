@@ -13,6 +13,7 @@ import { Result } from '../../class/Result';
 export class ViewresultComponent implements OnInit {
   displayedColumns: string[] = ['id', 'student_name', 'matricule_number', 'status', 'course_code', 'credit_value', 'c_a', 'exam', 'total', 'grades'];
   ELEMENT_DATA: Result[] = [];
+  show:Boolean;
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -23,7 +24,7 @@ export class ViewresultComponent implements OnInit {
     this.dataSource.paginator = this.paginator; 
 
     this._service.result().subscribe((data) => {
-      console.log(data);
+     // console.log(data);
       this.ELEMENT_DATA = data;
       //this.dataSource = data;
     },
@@ -40,13 +41,19 @@ export class ViewresultComponent implements OnInit {
   }
 
  send(){
+  this.show=true;
   this._service.sensResult(this.ELEMENT_DATA).subscribe((data) => {
-    console.log(data);
+   // console.log(data);
     this.openSnackBar("The Result have been send ");
+    this.show=false;
   },
     (error) => {
      // this.openSnackBar(error._body);
       console.log(error)
     })
+ }
+
+ unclick(value1,value2){
+
  }
 }

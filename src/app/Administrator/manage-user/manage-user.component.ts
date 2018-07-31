@@ -17,7 +17,7 @@ export class ManageUserComponent implements OnInit {
   ngOnInit() {
     let matricule: String = localStorage.getItem('matricule');
     this._service.manageUser(matricule).subscribe((data) => {
-      console.log(data);
+     // console.log(data);
       this.ELEMENT_DATA = data;
     },
       (error) => {
@@ -28,9 +28,9 @@ export class ManageUserComponent implements OnInit {
 
   disable(element){
     this._service.desactive(element.matriculeNumber).subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this._service.registerStudent().subscribe((data) => {
-        console.log(data);
+        //console.log(data);
         this.ELEMENT_DATA = data;
       },
         (error) => {

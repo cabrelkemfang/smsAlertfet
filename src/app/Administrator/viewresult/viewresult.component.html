@@ -1,5 +1,12 @@
+
+<div [class.loader-hidden]="!show">
+  <div class="loader-overlay">
+    <div>
+      <mat-progress-bar mode="indeterminate" *ngIf="show"></mat-progress-bar>
+    </div>
+  </div>
+</div>
 <mat-card class="example-card">
-   
   <mat-card-header>
       <button mat-raised-button color="accent" (click)='send()' >Send Result</button>
     <div class="example-container">
@@ -20,7 +27,7 @@
         </mat-select>
       </mat-form-field>
 
-      <button mat-raised-button class="but" (click)="function(option.value,semester.value)">
+      <button mat-raised-button class="but" (click)="unclick(option.value,semester.value)">
         Filter
       </button>
 

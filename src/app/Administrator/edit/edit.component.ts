@@ -3,23 +3,27 @@ import { Router } from '@angular/router';
 import { ServiceService } from '../../services/service.service';
 import { MatSnackBar } from '@angular/material';
 import { NgForm } from '@angular/forms';
+import { User } from '../../class/User';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css']
 })
-export class CreateUserComponent implements OnInit {
+export class EditComponent implements OnInit {
+
   show :Boolean;
+  user:User[]=[];
   constructor(private _router: Router, private _service: ServiceService,public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('data'));
   }
 
-  onSubmit(value :NgForm) {
+  onSubmit(value ) {
     //console.log(value);
     this.show = true;
-    this._service.saveUser(value).subscribe((data) => {
+    this._service.UpdateUser(value).subscribe((data) => {
       //console.log(data);
       this.show = false;
       this.openSnackBar("The have been created successfully");
@@ -37,3 +41,4 @@ export class CreateUserComponent implements OnInit {
     });
   }
 }
+

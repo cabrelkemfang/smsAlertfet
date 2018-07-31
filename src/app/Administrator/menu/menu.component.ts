@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../services/service.service';
 import { MatSnackBar } from '@angular/material';
+import { User } from '../../class/User';
 
 @Component({
   selector: 'app-menu',
@@ -22,7 +23,9 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     
     this._service.user(this.email).subscribe((data) => {
-      this.fullName=data.firstName+" "+data.lastName;
+     // this.fullName=data.firstName+" "+data.lastName;
+      localStorage.setItem('data', JSON.stringify(data));
+
       console.log(data);
     },
       (error) => {

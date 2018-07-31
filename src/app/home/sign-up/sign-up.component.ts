@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material';
 export class SignUpComponent implements OnInit {
   stu: Boolean;
   adm: Boolean;
+  show: Boolean;
   constructor(private _router: Router, private _service: ServiceService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -25,10 +26,13 @@ export class SignUpComponent implements OnInit {
     this.adm = false;
   }
   onSubmit(value) {
-    console.log(value)
+    //console.log(value)
+    
     if (value.login == "administrator") {
+      this.show = true;
       this._service.loginuser(value.email, value.password).subscribe((data) => {
-        console.log(data);
+       // console.log(data);
+        this.show = false;
         if (!data.present) {
           this.openSnackBar("The User Name or the Password are not correct Please try again");
         } else {
@@ -42,18 +46,20 @@ export class SignUpComponent implements OnInit {
         })
     } else {
       if (value.login == "student") {
+        this.show = true;
         this._service.login(value.matriculeNumber, value.password).subscribe((data) => {
-          console.log(data);
-          if (data==null) {
+          //console.log(data);
+          this.show = false;
+          if (data == null) {
             this.openSnackBar("The User Name or the Password are not correct Please try again");
           } else {
             if (data != null) {
               localStorage.setItem('matricule', value.matriculeNumber);
               // let token = btoa(value.matriculeNumber + ":" + value.password);
               // localStorage.setItem('token', token);
-              let status = data.status
-              console.log(status)
-              localStorage.setItem('status1', status);
+              //let status = data.status
+              // console.log(status)
+              //localStorage.setItem('status1', status);
 
               this._router.navigate(['menuStudent']);
             }
@@ -72,8 +78,7 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  sign_up(value) {
-    console.log(value);
+  sign_up() {
     this._router.navigate(['register']);
   }
 

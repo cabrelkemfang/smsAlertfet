@@ -18,7 +18,7 @@ export class ActivateComponent implements OnInit {
   ngOnInit() {
     this.active = true;
     this._service.status(this.matricule).subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.status = data;
       localStorage.setItem('status', data);
     },
@@ -30,7 +30,7 @@ export class ActivateComponent implements OnInit {
   activate() {
     this.active = false;
     this._service.code(this.matricule).subscribe((data) => {
-      console.log(data);
+    //  console.log(data);
       this.code = data;
     },
       (error) => {
@@ -39,10 +39,10 @@ export class ActivateComponent implements OnInit {
   }
 
   onSubmit(value) {
-    console.log(value);
+    //console.log(value);
     if (value.code == this.code) {
       this._service.activate(this.matricule).subscribe((data) => {
-        console.log(data);
+       // console.log(data);
       },
         (error) => {
           console.log(error)
@@ -51,7 +51,7 @@ export class ActivateComponent implements OnInit {
       this.openSnackBar("You have activate the Sms Alert successfully");
       this.active = true;
       this._service.status(this.matricule).subscribe((data) => {
-        console.log(data);
+        //console.log(data);
         this.status = data;
         localStorage.setItem('status', data);
       },

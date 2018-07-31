@@ -56,6 +56,7 @@ import { ActivateComponent } from './Student/activate/activate.component';
 import { PersonalInfoComponent } from './Student/personal-info/personal-info.component';
 import { ChangenumberComponent } from './Student/changenumber/changenumber.component';
 import { LoaderComponent } from './loader/loader/loader.component';
+import { EditComponent } from './Administrator/edit/edit.component';
 
 
 
@@ -69,7 +70,8 @@ const route: Routes = [
       { path: 'view_result', component: ViewresultComponent },
       { path: 'create_user', component: CreateUserComponent },
       { path: 'annonce', component: AnnonceComponent },
-      { path: 'manage_user', component: ManageUserComponent }
+      { path: 'manage_user', component: ManageUserComponent },
+      { path: 'edit', component: EditComponent }
     ]
   },
   {
@@ -98,6 +100,7 @@ const route: Routes = [
     ManageUserComponent,
     MenuStudentComponent,
     LoaderComponent,
+    EditComponent,
 
   ],
   imports: [

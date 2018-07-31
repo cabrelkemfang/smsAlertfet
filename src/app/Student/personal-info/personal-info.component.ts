@@ -13,6 +13,7 @@ export class PersonalInfoComponent implements OnInit {
   student: Student[] = [];
   level:String;
   phone:number;
+  activate:number;
   constructor(private _router: Router, private _service: ServiceService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -21,7 +22,9 @@ export class PersonalInfoComponent implements OnInit {
       this.student=data;
       this.phone=data.phoneNumber;
       this.level=data.level;
-      console.log(this.student);
+      this.activate=data.activate;
+
+     // console.log(this.student);
     },
       (error) => {
         console.log(error)
@@ -29,11 +32,12 @@ export class PersonalInfoComponent implements OnInit {
   }
 
   onSubmit(value) {
-    console.log(value);
+   // console.log(value);
    value.phoneNumber=this.phone;
    value.level=this.level;
-   console.log("student"+this.level+this.phone);
-   console.log(value);
+   value.activate=this.activate;
+ //  console.log("student"+this.level+this.phone);
+  // console.log(value);
     this._service.updateStudent(value).subscribe((data) => {
       console.log(data);
       this.openSnackBar("You account have been Updated");
