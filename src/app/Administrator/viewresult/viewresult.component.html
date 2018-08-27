@@ -30,6 +30,12 @@
       <button mat-raised-button class="but" (click)="unclick(option.value,semester.value)">
         Filter
       </button>
+      <div class="template">
+        <button mat-raised-button color="primary" (click)="template()" >Template</button>
+        <input class="ng-hide" id="input-file-id" multiple type="file" accept=".xls" (change)="selectFile($event)" enctype="multipart/form-data"
+        />
+        <button mat-raised-button color="accent" (click)="upload()" class="but3" type="submit" [disabled]="!selectedFiles">Upload</button>
+      </div>
 
     </div>
   </mat-card-header>
@@ -55,7 +61,7 @@
       <!-- Weight Column -->
       <ng-container matColumnDef="matricule_number">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Mat Number</th>
-        <td mat-cell *matCellDef="let element" (click)="open(element)"> {{element.matricule_nunber}} </td>
+        <td mat-cell *matCellDef="let element" (click)="open(element)"> {{element.matricule}} </td>
       </ng-container>
 
       <!-- Symbol Column -->

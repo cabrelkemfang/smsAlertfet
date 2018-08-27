@@ -12,28 +12,28 @@ import { User } from '../../class/User';
 })
 export class EditComponent implements OnInit {
 
-  show :Boolean;
-  user:User[]=[];
-  constructor(private _router: Router, private _service: ServiceService,public snackBar: MatSnackBar) { }
+  show: Boolean;
+  user: User[] = [];
+  password:String;
+  constructor(private _router: Router, private _service: ServiceService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('data'));
+    this.user = JSON.parse(localStorage.getItem('loginUser'));
+  
   }
 
-  onSubmit(value ) {
-    //console.log(value);
+  onSubmit(value) {
     this.show = true;
+    console.log(value)
+    value.password=JSON.parse(localStorage.getItem('loginUser')).password;
     this._service.UpdateUser(value).subscribe((data) => {
-      //console.log(data);
       this.show = false;
-      this.openSnackBar("The have been created successfully");
-     // value.resetForm();
-     // 
+      console.log(data)
+      this.openSnackBar("The have been Update successfully");
     },
       (error) => {
-        
-        this.openSnackBar(error._body);
-        console.log(error) })
+        console.log(error)
+      })
   }
   openSnackBar(message: string) {
     this.snackBar.open(message, " ", {

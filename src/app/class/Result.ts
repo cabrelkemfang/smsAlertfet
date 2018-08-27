@@ -1,6 +1,6 @@
 export class Result {
     student_name: String;
-    matricule_nunber: String;
+    matricule: String;
     status: String;
     course_code: String;
     credit_value: number;

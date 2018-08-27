@@ -1,0 +1,104 @@
+<div [class.loader-hidden]="!show">
+  <div class="loader-overlay">
+    <div>
+      <mat-progress-bar mode="indeterminate" *ngIf="show"></mat-progress-bar>
+    </div>
+  </div>
+</div>
+<mat-card class="example-card">
+  <p class="mat-elevation-z10">List of All the Group Available</p>
+
+  <br/>
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let lst of groupList " (click)="list(lst.name)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="title">
+            {{lst.name}}
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div>
+          <button mat-raised-button color="primary" (click)="openDialog()">Edit Group</button>
+          <button mat-raised-button color="warn" (click)="deleGroup(lst.name)">Delete Group</button>
+        </div >
+        
+        <div [hidden]="value">
+            <form #form="ngForm" (ngSubmit)="onSubmit(form.value,lst.name)" class="card">
+                <p class="mat-elevation-z10">Edit Group</p>
+      
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Edit Group" name="name" required ngModel>
+                  <mat-error>
+                    Please the Group Name is required
+                  </mat-error>
+                </mat-form-field>
+      
+                <button mat-raised-button class="color1" type="submit" [disabled]="!form.form.valid">Edit</button>
+              </form>
+        </div>
+        <table mat-table [dataSource]="ELEMENT_DATA" class="mat-elevation-z8 example-full-width">
+
+          <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> S/N </th>
+            <td mat-cell *matCellDef="let element ; let i = index" > {{i+1}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="firstName">
+            <th mat-header-cell *matHeaderCellDef> First Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="lastName">
+            <th mat-header-cell *matHeaderCellDef> Last Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef> Edit </th>
+            <td mat-cell *matCellDef="let element" (click)="edit(element)">
+              <button mat-raised-button color="primary">Edit</button>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+            <td mat-cell *matCellDef="let element" (click)="delete(element.id,lst.name)">
+              <button mat-raised-button color="warn">Delete</button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+
+      </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>

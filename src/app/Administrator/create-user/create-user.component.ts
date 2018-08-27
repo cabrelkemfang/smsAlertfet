@@ -10,26 +10,22 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
-  show :Boolean;
-  constructor(private _router: Router, private _service: ServiceService,public snackBar: MatSnackBar) { }
+  show: Boolean;
+  constructor(private _router: Router, private _service: ServiceService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
-  onSubmit(value :NgForm) {
-    //console.log(value);
+  onSubmit(value: NgForm) {
     this.show = true;
     this._service.saveUser(value).subscribe((data) => {
-      //console.log(data);
       this.show = false;
       this.openSnackBar("The have been created successfully");
-     // value.resetForm();
-     // 
+      this._router.navigate(['/menu/']);
     },
       (error) => {
-        
-        this.openSnackBar(error._body);
-        console.log(error) })
+        console.log(error)
+      })
   }
   openSnackBar(message: string) {
     this.snackBar.open(message, " ", {

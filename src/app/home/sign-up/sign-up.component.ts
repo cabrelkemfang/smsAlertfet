@@ -26,47 +26,41 @@ export class SignUpComponent implements OnInit {
     this.adm = false;
   }
   onSubmit(value) {
-    //console.log(value)
-    
+
     if (value.login == "administrator") {
       this.show = true;
       this._service.loginuser(value.email, value.password).subscribe((data) => {
-       // console.log(data);
         this.show = false;
-        if (!data.present) {
+       console.log(data.present)
+        if (data.present==false) {
           this.openSnackBar("The User Name or the Password are not correct Please try again");
+          
         } else {
-          localStorage.setItem('email', value.email);
+         // localStorage.setItem('loginUser', JSON.stringify(value));
+         localStorage.setItem('email', value.email);
+         localStorage.setItem('password', value.password);
           this._router.navigate(['/menu']);
         }
       },
         (error) => {
-          //this.openSnackBar(error._body);
           console.log(error)
         })
     } else {
       if (value.login == "student") {
         this.show = true;
         this._service.login(value.matriculeNumber, value.password).subscribe((data) => {
-          //console.log(data);
           this.show = false;
-          if (data == null) {
+          if (data.present==false) {
             this.openSnackBar("The User Name or the Password are not correct Please try again");
+            this.show = false;
           } else {
-            if (data != null) {
+          
               localStorage.setItem('matricule', value.matriculeNumber);
-              // let token = btoa(value.matriculeNumber + ":" + value.password);
-              // localStorage.setItem('token', token);
-              //let status = data.status
-              // console.log(status)
-              //localStorage.setItem('status1', status);
-
               this._router.navigate(['menuStudent']);
-            }
+            
           }
         },
           (error) => {
-            //this.openSnackBar(error._body);
             console.log(error)
           })
       }

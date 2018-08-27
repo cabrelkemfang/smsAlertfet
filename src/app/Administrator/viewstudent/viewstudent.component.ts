@@ -16,31 +16,25 @@ export class ViewstudentComponent implements OnInit {
   ngOnInit() {
     this.show=true;
     this._service.registerStudent().subscribe((data) => {
-      //console.log(data);
       this.ELEMENT_DATA = data;
       this.show=false;
     },
       (error) => {
-        this.openSnackBar(error._body);
-       // console.log(error)
+        console.log(error._body);
       })
   }
 
   disable(element){
     
     this._service.desactive(element.matriculeNumber).subscribe((data) => {
-      //console.log(data);
       this._service.registerStudent().subscribe((data) => {
-      // console.log(data);
         this.ELEMENT_DATA = data;
       },
         (error) => {
-          this.openSnackBar(error._body);
           console.log(error)
         })
     }, 
       (error) => {
-        this.openSnackBar(error._body);
         console.log(error)
       })
   }

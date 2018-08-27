@@ -1,0 +1,51 @@
+
+    <div [class.loader-hidden]="!show">
+      <div class="loader-overlay">
+              <div>
+                  <mat-progress-bar mode="indeterminate" *ngIf="show"></mat-progress-bar>
+              </div>
+      </div>
+    </div>
+        <mat-card class="example-card">
+          <mat-card-content>
+            <p  class="mat-elevation-z10">New participant</p>
+            <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" class="card">
+              
+              <mat-form-field class="example-full-width">
+                <mat-select placeholder="Select A Group" name="group" ngModel required>
+                  <mat-option value="{{lst.name}}" *ngFor="let lst of groupList">{{lst.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <input matInput type="text" placeholder="First Name " name="firstName" required  ngModel >
+                <mat-error>
+                  Please the First Name is required
+                </mat-error>
+              </mat-form-field>
+    
+              <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Last Name " name="lastName" required ngModel>
+                  <mat-error>
+                    Please the Last Name is required
+                  </mat-error>
+                </mat-form-field>
+    
+              <mat-form-field class="example-full-width">
+                <input matInput type="email" placeholder="Email" name="email" required ngModel>
+                <mat-error>
+                  Please the Email required
+                </mat-error>
+              </mat-form-field>
+    
+              <mat-form-field class="example-full-width">
+                <input matInput type="number" placeholder="Phone Number " name="phone" required ngModel>
+                <mat-error>
+                  Please the Phone Number is required
+                </mat-error>
+              </mat-form-field>
+    
+              <button mat-raised-button class="color1" type="submit" [disabled]="!form.form.valid">Add</button>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      

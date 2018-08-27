@@ -10,7 +10,9 @@ import { Observable } from 'rxjs';
 export class ServiceService {
 
   token = localStorage.getItem('token');
-
+   url:String="http://localhost:8087/";
+   //"https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/";
+//"http://localhost:8087/";
   constructor(private _http: Http) { }
 
   signup(student) {
@@ -20,7 +22,7 @@ export class ServiceService {
     //headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
 
-    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/student', JSON.stringify(student), options)
+    return this._http.post(this.url+'student', JSON.stringify(student), options)
       .pipe(map(res => res.status) // or any other operator
       );
   }
@@ -32,8 +34,8 @@ export class ServiceService {
     //headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
 
-    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/user', JSON.stringify(user), options)
-      .pipe(map(res => res.json()) // or any other operator
+    return this._http.post(this.url+'user', JSON.stringify(user), options)
+      .pipe(map(res => res.status) // or any other operator
       );
   }
 
@@ -45,8 +47,8 @@ export class ServiceService {
     //headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
 
-    return this._http.put('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/user', JSON.stringify(user), options)
-      .pipe(map(res => res.json()) // or any other operator
+    return this._http.put(this.url+'user', JSON.stringify(user), options)
+      .pipe(map(res => res.status) // or any other operator
       );
   }
 
@@ -57,7 +59,7 @@ export class ServiceService {
     //headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
 
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/user/'+email, options)
+    return this._http.get(this.url+'secure/user/'+email, options)
       .pipe(map(res => res) // or any other operator
       );
   }
@@ -70,7 +72,7 @@ export class ServiceService {
     //headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
 
-    return this._http.put('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/student', JSON.stringify(student), options)
+    return this._http.put(this.url+'secure/student', JSON.stringify(student), options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
@@ -82,19 +84,31 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/login/' + matricule + '/' + password, options)
+    return this._http.get(this.url+'secure/login/' + matricule + '/' + password, options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
 
   loginuser(email, password) {
-    // let token = btoa(matricule + ":" + password)
+    // let token = btoa(matricule + ":" + password
     let headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json');
     //  headers.append('Authorization', 'Basic ' + token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/login/user/' + email + '/' + password, options)
+    return this._http.get(this.url+'secure/login/user/' + email + '/' + password, options)
+      .pipe(map(res => res.json()) // or any other operator
+      );
+  }
+
+  loginuser1(email, password) {
+    // let token = btoa(matricule + ":" + password
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    //  headers.append('Authorization', 'Basic ' + token);
+    let options = new RequestOptions({ headers: headers });
+    return this._http.get(this.url+'secure/login/user1/' + email + '/' + password, options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
@@ -105,18 +119,18 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/result', options)
+    return this._http.get(this.url+'secure/result', options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
 
   update() {
     let headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'Basic ' + this.token);
+    headers.append("Accept", 'applica editgroup(tion/json');
+    headers.append('Content-Type', 'a editgroup(pplication/json');
+    // headers.append('Authorization' editgroup(, 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.put('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/result', options)
+    return this._http.put(this.url+'/result', options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
@@ -127,7 +141,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.put('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/student/' + phone + '/' + matricule, options)
+    return this._http.put(this.url+'secure/student/' + phone + '/' + matricule, options)
       .pipe(map(res => res.text()) // or any other operator
       );
   }
@@ -138,7 +152,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/activated/student', options)
+    return this._http.get(this.url+'secure/activated/student', options)
       .pipe(map(res => res.json()) // or any other operator
       );
   }
@@ -149,8 +163,30 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/send/result', JSON.stringify(result), options)
+    return this._http.post(this.url+'secure/send/result', JSON.stringify(result), options)
       .pipe(map(res => res.status)
+      );
+  }
+
+  postgroup(result,name) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+   // headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+    return this._http.post(this.url+'group/'+name, result, options)
+      .pipe(map(res => res.status)
+      );
+  }
+
+  findgroup(name) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+   // headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+    return this._http.get(this.url+'group/'+name, options)
+      .pipe(map(res => res.json())
       );
   }
 
@@ -164,7 +200,7 @@ export class ServiceService {
     const formData = new FormData();
     formData.append('file', file, file.name);
 
-    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/send/email/'+subject+'/'+content+'/'+level, formData, options)
+    return this._http.post(this.url+'send/email/'+subject+'/'+content+'/'+level, formData, options)
       .pipe(map(res => res.status)
       );
   }
@@ -176,7 +212,7 @@ export class ServiceService {
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
     
-    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/send/simple/email/'+subject+'/'+content+'/'+level, options)
+    return this._http.post(this.url+'send/simple/email/'+subject+'/'+content+'/'+level, options)
       .pipe(map(res => res.status)
       );
   }
@@ -187,7 +223,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.post('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/send/annoncement/' + message + '/' + title + '/' + level, options)
+    return this._http.post(this.url+'secure/send/annoncement/' + message + '/' + title + '/' + level, options)
       .pipe(map(res => res.status)
       );
   }
@@ -198,7 +234,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/desactivate/' + matricule, options)
+    return this._http.get(this.url+'secure/desactivate/' + matricule, options)
       .pipe(map(res => res.status)
       );
   }
@@ -209,7 +245,18 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/student/' + matricule, options)
+    return this._http.get(this.url+'student/' + matricule, options)
+      .pipe(map(res => res.json())
+      );
+  }
+
+  student1(matricule) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+    return this._http.get(this.url+'student1/' + matricule, options)
       .pipe(map(res => res.json())
       );
   }
@@ -220,7 +267,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/user/' + matricule, options)
+    return this._http.get(this.url+'secure/user/' + matricule, options)
       .pipe(map(res => res.json())
       );
   }
@@ -231,7 +278,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/verification/' + matricule, options)
+    return this._http.get(this.url+'secure/verification/' + matricule, options)
       .pipe(map(res => res.text())
       );
   }
@@ -242,7 +289,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/verification/update/' + phone, options)
+    return this._http.get(this.url+'secure/verification/update/' + phone, options)
       .pipe(map(res => res.text())
       );
   }
@@ -253,7 +300,7 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/activate/' + matricule, options)
+    return this._http.get(this.url+'secure/activate/' + matricule, options)
       .pipe(map(res => res.text())
       );
   }
@@ -265,10 +312,115 @@ export class ServiceService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + this.token);
     let options = new RequestOptions({ headers: headers });
-    return this._http.get('https://localhost:443/sms_notification_platform-0.0.1-SNAPSHOT/secure/status/' + matricule, options)
+    return this._http.get(this.url+'secure/status/' + matricule, options)
       .pipe(map(res => res.json())
       );
   }
 
+  userTemplate(): Observable<Blob> {
+    let headers = new Headers({
+      'Accept': 'application/vnd.ms-excel'
+    });
+    let options = new RequestOptions({
+      responseType: ResponseContentType.Blob
+    });
+  
+    return this._http.get(this.url+'groupSheet', options)
+      .pipe(map((response: Response) => new Blob([response], { type: 'application/vnd.ms-excel' }))
+  
+      );
+  
+  }
+
+  postUpload(file: File): Observable<void> {
+    let headers = new Headers({
+      'Accept': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
+    const formdata = new FormData();
+    formdata.append('file', file, file.name);
+    return this._http.post(this.url+'upload', formdata, options)
+      .pipe(map((res: Response) => res.json()));
+    //.catch(this.errorHandler);
+  }
+
+  resultUpload(file: File): Observable<any> {
+    let headers = new Headers({
+      'Accept': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
+    const formdata = new FormData();
+    formdata.append('file', file, file.name);
+    return this._http.post(this.url+'uploadResult', formdata, options)
+      .pipe(map((res: Response) => res.json()));
+    //.catch(this.errorHandler);
+  }
+
+  getGroupList() {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+    return this._http.get(this.url+'groupList', options)
+      .pipe(map(res => res.json())
+      );
+  }
+
+  getgroup(name) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+    return this._http.get(this.url+'group/'+name, options)
+      .pipe(map(res => res.json())
+      );
+  }
+
+  deleteParticipant(name) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+   // headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+    return this._http.delete(this.url+'participant/'+name, options)
+      .pipe(map(res => res.status)
+      );
+  }
+
+  deletegroup(name) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+   // headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+    return this._http.delete(this.url+'group/'+name, options)
+      .pipe(map(res => res.json())
+      );
+  }
+
+  editgroup(value2,value1) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+    return this._http.put(this.url+'group/update/'+value2+'/'+value1, options)
+      .pipe(map(res => res.status)
+      );
+  }
+
+  editParticipant(value) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    //headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+
+    return this._http.put(this.url+'participant', JSON.stringify(value), options)
+      .pipe(map(res => res.status) // or any other operator
+      );
+  }
 
 }

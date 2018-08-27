@@ -10,57 +10,74 @@
     <h2> Sms Notification Platform </h2>
   </span>
   <p>
-      <mat-icon class="example-icon">account_circle</mat-icon> {{fullName}}
-      <br/>
-      <mat-icon class="example-icon">email</mat-icon> {{email}}
-    </p>
+    <mat-icon class="example-icon">account_circle</mat-icon> {{fullName}}
+    <br/>
+    <mat-icon class="example-icon">email</mat-icon> {{email}}
+  </p>
 </mat-toolbar>
 
 <mat-drawer-container class="example-container " autosize>
   <mat-drawer #drawer class="example-sidenav mat-elevation-z20" mode="side" opened>
-  
+
     <mat-list class="list">
-      <div [hidden]="user">
-        <div class="admin">
-          <mat-list-item routerLink="edit" routerLinkActive="active-link">
+      <mat-list-item routerLink="edit" routerLinkActive="active-link">
 
-            Update Profil
+        Update Profil
 
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item routerLink="annonce" routerLinkActive="active-link">
+      </mat-list-item>
+      <mat-divider></mat-divider>
 
-            Send an Annoncement
+      <mat-list-item routerLink="create_group" routerLinkActive="active-link">
 
-          </mat-list-item>
-          <mat-divider></mat-divider>
+        Create Group
 
-          <mat-list-item routerLink="view_student" routerLinkActive="active-link">
+      </mat-list-item>
+      <mat-divider></mat-divider>
 
-            View Resgister student
+      <mat-list-item routerLink="available_group" routerLinkActive="active-link">
 
-          </mat-list-item>
-          <mat-divider></mat-divider>
+        Available Group
 
-          <mat-divider></mat-divider>
-          <mat-list-item routerLink="view_result" routerLinkActive="active-link">
+      </mat-list-item>
+      <mat-divider></mat-divider>
 
-            View Result
+      <mat-list-item routerLink="add_participant" routerLinkActive="active-link">
 
-          </mat-list-item>
-          <mat-divider></mat-divider>
+        Add New Participant
 
-          <mat-divider></mat-divider>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="annonce" routerLinkActive="active-link">
 
-          <mat-list-item routerLink="create_user" routerLinkActive="active-link">
-            Create a user
+        Send an Annoncement
 
-          </mat-list-item>
-          <mat-divider></mat-divider>
-        
-          <mat-divider></mat-divider>
-        </div>
-      </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-list-item routerLink="view_student" routerLinkActive="active-link">
+
+        View Resgister student
+
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="view_result" routerLinkActive="active-link">
+
+        View Result
+
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item routerLink="create_user" routerLinkActive="active-link">
+        Create a user
+
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-divider></mat-divider>
       <mat-list-item>
         <button mat-raised-button color="accent" class="example-full-width" (click)="logout()">Logout</button>
       </mat-list-item>

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ServiceService } from '../../services/service.service';
 import { MatSnackBar } from '@angular/material';
 import { NgForm } from '@angular/forms';
-import { LoaderServiceService } from '../../loader/loader-service.service';
 
 @Component({
   selector: 'app-annonce',
@@ -11,20 +10,23 @@ import { LoaderServiceService } from '../../loader/loader-service.service';
   styleUrls: ['./annonce.component.css']
 })
 export class AnnonceComponent implements OnInit {
-  level: String[] = ["200", "300", "400", "500", "600"]
   mail: Boolean;
   show: Boolean;
   selectedFiles: File = null;
   fileSize: number;
   value1: boolean = false;
+  groupList;
   constructor(private _router: Router,
     private _service: ServiceService,
-    public snackBar: MatSnackBar,
-    private loaderService: LoaderServiceService) { }
+    public snackBar: MatSnackBar) { }
   @ViewChild('form') mytemplateForm: NgForm;
   ngOnInit() {
+
+    this._service.getGroupList().subscribe(event => {
+      this.groupList = event;
+
+    });
     this.mail = true;
-   // console.log(this.value1)
   }
 
   email() {
@@ -41,8 +43,6 @@ export class AnnonceComponent implements OnInit {
   }
 
   onSubmit(value) {
-   // console.log(value);
-   // console.log(this.selectedFiles.name);
 
     if (value.sendAs == "sms") {
       this.show = true;
@@ -51,34 +51,30 @@ export class AnnonceComponent implements OnInit {
         this.openSnackBar("The SmS have been  send successfully..");
         this.show = false;
         this.mytemplateForm.reset();
-      //  console.log(data);
       },
         (error) => {
-          console.log(error._body);
           console.log(error)
         })
     } else if (value.sendAs == "email") {
-      //console.log(this.value1)
-      if (value.file!=null) {
+      console.log(value)
+      console.log(value.file)
+      if (this.mail != true) {
         this.show = true;
         this._service.sendEmail(value.subject, value.content, value.level, this.selectedFiles).subscribe((data) => {
-
           this.openSnackBar("The Email have been send successfully..");
           this.show = false;
           this.mytemplateForm.reset();
           console.log(data);
         }, (error) => {
-          console.log(error._body);
           console.log(error)
         })
       } else {
         this.show = true;
         this._service.sendSimpleEmail(value.subject, value.content, value.level).subscribe((data) => {
-
           this.openSnackBar("The Email have been send successfully..");
           this.show = false;
           this.mytemplateForm.reset();
-         console.log(data);
+          console.log(data);
 
         },
           (error) => {
@@ -89,17 +85,17 @@ export class AnnonceComponent implements OnInit {
 
     }
   }
+  unclick(){
+    this.mail = true;
+  }
 
   allo() {
     this.value1 = !this.value1;
-    console.log(
-      this.value1
-    )
   }
   openSnackBar(message: string) {
     this.snackBar.open(message, " ", {
       duration: 5000,
     });
   }
-
+ 
 }

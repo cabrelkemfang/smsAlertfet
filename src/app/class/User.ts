@@ -2,6 +2,6 @@ export class User {
     private firstName:String;
     private lastName:String;
     private email:String;
-    private password:String;
+    public password:String;
     private phoneNumber:Number;
 }

@@ -5,50 +5,41 @@
           </div>
   </div>
 </div>
-
     <mat-card class="example-card">
       <mat-card-content>
 
         <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" class="card">
-          <p  class="mat-elevation-z10">New User</p>
+          <p  class="mat-elevation-z10">Edit Profil</p>
           <mat-form-field class="example-full-width">
-            <input matInput type="text" placeholder="First Name " name="firstName" required ngModel>
+            <input matInput type="text" placeholder="First Name " name="firstName" required  [(ngModel)]="user.firstName" >
             <mat-error>
               Please the First Name is required
             </mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-              <input matInput type="text" placeholder="Last Name " name="lastName" required ngModel>
+              <input matInput type="text" placeholder="Last Name " name="lastName" required [(ngModel)]="user.lastName">
               <mat-error>
                 Please the Last Name is required
               </mat-error>
             </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput type="email" placeholder="Email" name="email" required ngModel>
+            <input matInput type="email" placeholder="Email" name="email" required [(ngModel)]="user.email">
             <mat-error>
               Please the Email required
             </mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput type="number" placeholder="Phone Number " name="phoneNumber" required ngModel>
+            <input matInput type="number" placeholder="Phone Number " name="phone" required [(ngModel)]="user.phone">
             <mat-error>
               Please the Phone Number is required
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field class="example-full-width">
-            <input matInput type="password" placeholder="Password" name="password" required ngModel>
-            <mat-error>
-              Please the password is required
-            </mat-error>
-          </mat-form-field>
-          <button mat-raised-button class="color1" type="submit" [disabled]="!form.form.valid">Create</button>
-          <button mat-raised-button color="warn" type="reset" >Resert</button>
+          <button mat-raised-button class="color1" type="submit" [disabled]="!form.form.valid">Update</button>
         </form>
-        
       </mat-card-content>
     </mat-card>
   

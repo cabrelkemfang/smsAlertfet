@@ -18,6 +18,7 @@ export class MenuStudentComponent implements OnInit {
   matricule: String = localStorage.getItem('matricule');
   fullName:String;
   email:String;
+
   constructor(private _router: Router, private _service: ServiceService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {

@@ -23,9 +23,8 @@
           </td>
           <td>
             <mat-form-field class="example-full-width">
-              <mat-select placeholder="Select A Level" name="level" ngModel>
-                <mat-option value="{{lst}}" *ngFor="let lst of level">{{lst}}</mat-option>
-                <mat-option value=100>All</mat-option>
+              <mat-select placeholder="Select A Group" name="level" ngModel>
+                <mat-option value="{{lst.name}}" *ngFor="let lst of groupList">{{lst.name}}</mat-option>
               </mat-select>
             </mat-form-field>
           </td>
@@ -47,10 +46,13 @@
         </mat-error>
       </mat-form-field>
 
+     
       <div [hidden]="mail" class="example-full-width">
-        
+          <mat-checkbox (click)="unclick()" checked="checked" >Attache file??</mat-checkbox>
+        <div >
         <input id="input-file-id" multiple type="file" (change)="selectFile($event)" enctype="multipart/form-data" name="file" ngModel
           [disabled]="mail" />
+        </div>
       </div>
 
       <button mat-raised-button type="submit" [disabled]="!form.form.valid" class="example-full-width color1">Send Annonce</button>

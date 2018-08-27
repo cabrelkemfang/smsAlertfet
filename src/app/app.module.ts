@@ -55,8 +55,12 @@ import { MenuStudentComponent } from './Student/menu-student/menu-student.compon
 import { ActivateComponent } from './Student/activate/activate.component';
 import { PersonalInfoComponent } from './Student/personal-info/personal-info.component';
 import { ChangenumberComponent } from './Student/changenumber/changenumber.component';
-import { LoaderComponent } from './loader/loader/loader.component';
 import { EditComponent } from './Administrator/edit/edit.component';
+import { CreateGroupComponent } from './Administrator/create-group/create-group.component';
+import { EditGroupComponent } from './Administrator/edit-group/edit-group.component';
+import { GroupEditComponent } from './Admininstrator/group-edit/group-edit.component';
+import { ModifyComponent } from './Administrator/modify/modify.component';
+import { AddParticipantComponent } from './Administrator/add-participant/add-participant.component';
 
 
 
@@ -71,7 +75,11 @@ const route: Routes = [
       { path: 'create_user', component: CreateUserComponent },
       { path: 'annonce', component: AnnonceComponent },
       { path: 'manage_user', component: ManageUserComponent },
-      { path: 'edit', component: EditComponent }
+      { path: 'edit', component: EditComponent },
+      { path: 'create_group', component: CreateGroupComponent },
+      { path: 'available_group', component: EditGroupComponent },
+      { path: 'group_edition', component: ModifyComponent },
+      { path: 'add_participant', component: AddParticipantComponent },
     ]
   },
   {
@@ -99,8 +107,12 @@ const route: Routes = [
     ChangenumberComponent,
     ManageUserComponent,
     MenuStudentComponent,
-    LoaderComponent,
     EditComponent,
+    CreateGroupComponent,
+    EditGroupComponent,
+    GroupEditComponent,
+    ModifyComponent,
+    AddParticipantComponent,
 
   ],
   imports: [

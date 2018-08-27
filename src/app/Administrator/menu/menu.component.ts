@@ -10,33 +10,33 @@ import { User } from '../../class/User';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  status: String = localStorage.getItem('status');
-  value: String;
-  style;
   student: boolean;
   status1: String;
   user: boolean;
-  email: String = localStorage.getItem('email');
-  fullName:String;
+  fullName: String;
+  loginUser;
+  email:String;
+  password:String;
   constructor(private _router: Router, private _service: ServiceService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    
-    this._service.user(this.email).subscribe((data) => {
-     // this.fullName=data.firstName+" "+data.lastName;
-      localStorage.setItem('data', JSON.stringify(data));
+    this.email = localStorage.getItem('email');
+    this.password = localStorage.getItem('password');
 
-      console.log(data);
+    this._service.loginuser1(this.email, this.password).subscribe((data) => {
+     console.log(data)
+     localStorage.setItem('loginUser', JSON.stringify(data));
+     this.fullName=data.firstName+" "+data.lastName;
+     
     },
       (error) => {
-        console.log(error._body);
         console.log(error)
       })
+    
   }
 
   logout() {
     localStorage.removeItem("token");
-  
     localStorage.removeItem("email");
     localStorage.removeItem("status");
     localStorage.clear();
