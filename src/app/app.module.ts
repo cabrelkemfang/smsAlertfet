@@ -61,6 +61,7 @@ import { EditGroupComponent } from './Administrator/edit-group/edit-group.compon
 import { GroupEditComponent } from './Admininstrator/group-edit/group-edit.component';
 import { ModifyComponent } from './Administrator/modify/modify.component';
 import { AddParticipantComponent } from './Administrator/add-participant/add-participant.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
 
 
 
@@ -80,6 +81,7 @@ const route: Routes = [
       { path: 'available_group', component: EditGroupComponent },
       { path: 'group_edition', component: ModifyComponent },
       { path: 'add_participant', component: AddParticipantComponent },
+      { path: 'config', component: ConfigurationComponent },
     ]
   },
   {
@@ -113,6 +115,7 @@ const route: Routes = [
     GroupEditComponent,
     ModifyComponent,
     AddParticipantComponent,
+    ConfigurationComponent,
 
   ],
   imports: [

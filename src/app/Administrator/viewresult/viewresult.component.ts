@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../services/service.service';
 import { MatSnackBar, MatPaginator, MatTableDataSource } from '@angular/material';
-import { Result } from '../../class/Result';
+import { Result } from '../../class/result';
 
 @Component({
   selector: 'app-viewresult',
@@ -75,6 +75,10 @@ upload() {
       console.log(event);
     });
   }
+}
+
+unclick(value1,value2){
+
 }
 
 

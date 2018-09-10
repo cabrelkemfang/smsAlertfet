@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../services/service.service';
 import { MatSnackBar } from '@angular/material';
-import { User } from '../../class/User';
+import { User } from '../../class/user';
 
 @Component({
   selector: 'app-modify',
@@ -21,7 +21,7 @@ export class ModifyComponent implements OnInit {
   }
 
 
-  onSubmit() {
+  onSubmit(value) {
     console.log(this.user)
     this.show = true;
     this._service.editParticipant(this.user).subscribe(event => {

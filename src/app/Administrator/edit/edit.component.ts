@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ServiceService } from '../../services/service.service';
 import { MatSnackBar } from '@angular/material';
 import { NgForm } from '@angular/forms';
-import { User } from '../../class/User';
+import { User } from '../../class/user';
 
 @Component({
   selector: 'app-edit',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../services/service.service';
 import { MatSnackBar } from '@angular/material';
-import { Student } from '../../class/Student';
+import { Student } from '../../class/student';
 
 @Component({
   selector: 'app-personal-info',

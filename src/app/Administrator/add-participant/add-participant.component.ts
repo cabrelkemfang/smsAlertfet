@@ -15,13 +15,20 @@ export class AddParticipantComponent implements OnInit {
 
 
   ngOnInit() {
-    this.show = true;
+    //this.show = true;
     this._service.getGroupList().subscribe(event => {
       this.groupList = event;
       this.show = false;
     });
   }
-  onSubmit(value){
+
+  onSubmit(value) {
     console.log(value)
-  }
+    this.show = true;
+    this._service.postgroup1(value, value.group).subscribe(event => {
+      this.show = false;
+      this._router.navigate(['/menu/available_group']);
+    });
+}
+
 }

@@ -179,6 +179,19 @@ export class ServiceService {
       );
   }
 
+
+  postgroup1(result,name) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+   // headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+    return this._http.post(this.url+'group1/'+name, result, options)
+      .pipe(map(res => res.status)
+      );
+  }
+  
+
   findgroup(name) {
     let headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -419,6 +432,29 @@ export class ServiceService {
     let options = new RequestOptions({ headers: headers });
 
     return this._http.put(this.url+'participant', JSON.stringify(value), options)
+      .pipe(map(res => res.status) // or any other operator
+      );
+  }
+
+  getConfig1() {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+    return this._http.get(this.url+'config', options)
+      .pipe(map(res => res.json())
+      );
+  }
+
+  updateConfig(value) {
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    //headers.append('Authorization', 'Basic ' + this.token);
+    let options = new RequestOptions({ headers: headers });
+
+    return this._http.put(this.url+'config', JSON.stringify(value), options)
       .pipe(map(res => res.status) // or any other operator
       );
   }

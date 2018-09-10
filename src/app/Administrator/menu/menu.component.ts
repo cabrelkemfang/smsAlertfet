@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../services/service.service';
 import { MatSnackBar } from '@angular/material';
-import { User } from '../../class/User';
+import { User } from '../../class/user';
 
 @Component({
   selector: 'app-menu',

@@ -3,7 +3,6 @@
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
   }
-  
   .example-container {
     flex:1;
     position: fixed;
@@ -11,11 +10,9 @@
     min-width: 100%;
     max-width: 100%;
     height: 100%;
-    
   }
   
   .example-sidenav-content {
-    
     height: 100%;
     align-items: center;
     margin: 30px;
@@ -29,22 +26,19 @@
     background-size: 100% 100%;
     justify-content: center;
     position: absolute;
-  
   }
   
   .example-sidenav {
     padding: 10px;
-    width: 260px;
+    width: 240px;
   }
-  .example-full-width {
-    width: 100%;
-  }
+
   .list{
-    margin-top: 5px;
+    margin-top: 60px;
 
   }
   .list mat-list-item{
-      margin-bottom: 5px;
+      margin-bottom: 20px;
   }
 
   .wrapper {
@@ -59,19 +53,42 @@
   .tool{
      background-color: #CEE3F6; 
   }
+  .tool1{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    color: #145A32;
+ }
+  .example-card {
+    width: 60%;
+    height: 60%;
+    text-align: center;
+    justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 10%;
+  background-color: white;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
 
-  .active-link {
-    background-color:rgb(170,204,238);
-} 
-.sms{
-  color: crimson;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.val{
-  color: white;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  .color1{ 
+     background-color: green;
+  }
+  .mat-elevation-z10{
+    padding: 7px;
+    background-color: #CEE3F6;
+  }
+  

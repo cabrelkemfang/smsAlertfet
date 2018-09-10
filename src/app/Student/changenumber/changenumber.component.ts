@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../../class/Student';
+import { Student } from '../../class/student';
 import { ServiceService } from '../../services/service.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
